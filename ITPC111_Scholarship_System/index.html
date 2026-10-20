@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ScholarTrack | Scholarship Monitoring</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">S</div><div><strong>ScholarTrack</strong><small>Academic Compliance</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <nav id="nav" class="nav hidden">
+        <button data-view="dashboard" class="nav-item active">▦ <span>Dashboard</span></button>
+        <button data-view="submissions" class="nav-item">▤ <span>Submissions</span></button>
+        <button data-view="scholars" class="nav-item staff-only">♙ <span>Scholars</span></button>
+        <button data-view="programs" class="nav-item staff-only">◇ <span>Programs &amp; policies</span></button>
+        <button data-view="history" class="nav-item staff-only">◷ <span>Audit history</span></button>
+      </nav>
+      <div class="sidebar-bottom"><span class="status-dot"></span><span id="connection-label">Not connected</span></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><div class="eyebrow">SCHOLARSHIP OFFICE</div><h1 id="page-title">Welcome</h1></div><div class="top-actions"><span id="user-chip" class="user-chip hidden"></span><button id="signout-btn" class="btn btn-ghost hidden">Sign out</button></div></header>
+      <section id="setup-alert" class="setup-alert hidden"></section>
+      <section id="auth-view" class="auth-layout">
+        <div class="auth-intro"><div class="eyebrow light">STUDENT SCHOLARSHIP MONITORING</div><h2>Clarity for every<br><em>scholarship journey.</em></h2><p>Submit academic summaries, track verification, and follow renewal decisions in one place.</p><div class="auth-points"><div>✓ Secure scholar access</div><div>✓ Evidence verification workflow</div><div>✓ Policy-based compliance checks</div></div></div>
+        <div class="auth-card"><div class="tabs"><button id="login-tab" class="tab active">Sign in</button><button id="signup-tab" class="tab">Create scholar account</button></div>
+          <form id="login-form"><h3>Welcome back</h3><p class="muted">Sign in to continue to your workspace.</p><label>Email address<input type="email" id="login-email" required autocomplete="email" placeholder="you@example.com"></label><label>Password<input type="password" id="login-password" required autocomplete="current-password" placeholder="Enter your password"></label><button class="btn btn-primary full" type="submit">Sign in</button></form>
+          <form id="signup-form" class="hidden"><h3>Create scholar account</h3><p class="muted">Self-registration creates a scholar account. Staff accounts must be provisioned securely.</p><label>Full name<input id="signup-name" required maxlength="120" placeholder="Full name"></label><label>Student ID<input id="signup-student-id" required maxlength="40" placeholder="e.g. 2026-001"></label><label>Email address<input type="email" id="signup-email" required autocomplete="email" placeholder="you@example.com"></label><label>Password<input type="password" id="signup-password" minlength="8" required autocomplete="new-password" placeholder="At least 8 characters"></label><button class="btn btn-primary full" type="submit">Create account</button></form>
+          <div id="auth-message" class="message" role="status"></div><div class="auth-foot">Use synthetic records only. Never share passwords or secret keys.</div>
+        </div>
+      </section>
+      <section id="app-view" class="hidden">
+        <div id="stats" class="stats-grid"></div>
+        <div id="content"></div>
+      </section>
+      <div id="toast" class="toast hidden" role="status"></div>
+    </main>
+  </div>
+  <dialog id="modal"><form method="dialog" class="modal-close-row"><button class="icon-btn" aria-label="Close">×</button></form><div id="modal-content"></div></dialog>
+</body>
+</html>
